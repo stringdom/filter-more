@@ -63,7 +63,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
                 double result = sum / 3.0;
 
                 // Save the round int
-                average = (int)nearbyint(result);
+                average = (int)round(result);
             }
             // Save the new value.
             image[i][j].rgbtBlue = average;
@@ -341,7 +341,7 @@ long averages(int numbers, BYTE vector[numbers])
         sum += (double)vector[i];
     }
     double result = sum / (double)numbers;
-    result = rint(result);
+    result = round(result);
     return (long)result;
 }
 
@@ -354,7 +354,7 @@ BYTE sobel(long Gx, long Gy)
 
     // Square root of the addition.
     double root = sqrt((x + y));
-    long result = (long)nearbyint(root);
+    long result = (long)round(root);
 
     switch (result)
     {
