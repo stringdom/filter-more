@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <fenv.h>
+// #include <fenv.h>
 
 // I'm going to create some data structs to ease the process of calculating some stuff.
 const int Gx_kernel[][3] =
@@ -330,10 +330,10 @@ void get_grid(GRID *target, int height, int width, RGBTRIPLE image[height][width
 
 long averages(int numbers, BYTE vector[numbers])
 {
-    if (fegetround() != FE_TONEAREST)
-    {
-        fesetround(FE_TONEAREST);
-    }
+    // if (fegetround() != FE_TONEAREST)
+    // {
+    //     fesetround(FE_TONEAREST);
+    // }
 
     double sum = 0;
     for (int i = 0; i < numbers; i++)
@@ -341,7 +341,7 @@ long averages(int numbers, BYTE vector[numbers])
         sum += (double)vector[i];
     }
     double result = sum / (double)numbers;
-    result = nearbyint(result);
+    result = rint(result);
     return (long)result;
 }
 
